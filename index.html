@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload to IPFS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            margin: 0;
+            padding: 0;
+            background: #0a0a0a;
+            animation: bg-animation 10s infinite alternate;
+            background-size: 400% 400%;
+        }
+        @keyframes bg-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+            from { background-position: 0% 50%; }
+            to { background-position: 100% 50%; }
+        }
+        body:before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(-45deg, #0b0c0c, #093028, #0c0b0b, #040f0a);
+            clip-path: circle(30% at right 70%);
+            animation: gradient-animation 6s ease infinite;
+            background-size: 300% 300%;
+            z-index: -1;
+        }
+        @keyframes gradient-animation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .content-box, .link-box {
+            background-color: rgba(33, 37, 41, 0.85);
+            border: 2px solid #00ff41;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px auto;
+            color: #00ff41;
+            width: 60%;
+            box-shadow: 0 4px 8px rgba(0, 255, 65, 0.3);
+        }
+        .btn, .form-control {
+            background-color: #2c2f33;
+            border: 1px solid #00ff41;
+            color: #00ff41;
+        }
+        .btn:hover {
+            background-color: #00ff41;
+            color: #212529;
+        }
+        .link-container {
+            margin-top: 10px;
+        }
+        .fas {
+            margin-right: 5px;
+        }
+        .description {
+            text-align: justify;
+            margin-bottom: 30px;
+        }
+    </style>    
+</head>
+<body>
+<div class="container text-center">
+    <div class="content-box">
+        <h2><i class="fas fa-cloud-upload-alt"></i> Upload File to IPFS</h2>
+        <div class="description">
+            <p>IPFS, or InterPlanetary File System, is a protocol and peer-to-peer network for storing and sharing data in a distributed file system. IPFS uses content-addressing to uniquely identify each file in a global namespace connecting all computing devices.</p>
+            <p>With this we application you can store files in IPFS all you have to do is create and get API key from <a href="https://www.pinata.cloud/">Pinata</a>.</p>
+            <p>You can upload images and documents although any web application files like .html might due to piniata restriction plan..</p>
+        </div>
+        <input type="file" id="fileInput" class="form-control mt-3">
+        <button class="btn btn-primary mt-3" id="uploadButton"><i class="fas fa-upload"></i> Upload</button>
+        <p id="uploadStatus" class="mt-3"></p>
+    </div>
+    <div class="content-box">
+        <div id="linkContainer" style="display: none;"> <!-- Add this wrapper with an ID -->
+            <div class="link-container">
+                <a id="fileLink" href="#" target="_blank" class="d-block mb-2"><i class="fas fa-external-link-alt"></i> View File</a>
+            </div>
+            <div class="link-container">
+                <button id="copyButton" class="btn"><i class="fas fa-copy"></i> Copy Link</button>
+            </div>
+        </div>        
+    </div>
+</div>
+
+<script src="app.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
